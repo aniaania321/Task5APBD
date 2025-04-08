@@ -1,0 +1,3 @@
+P-1,LinuxPC,False,Linux Mint
+SW-2,PC,False,27%
+SW-3,Apple watch,False,100%

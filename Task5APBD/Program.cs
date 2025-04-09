@@ -18,20 +18,36 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-FileService fileService = new FileService("/Users/aniasmuga/RiderProjects/Task5APBD/Task5APBD/input.txt");
+FileService fileService = new FileService("/Users/aniasmuga/RiderProjects/Task5APBD/APBDlogic/input.txt");
 DeviceParser deviceParser = new DeviceParser();
 DeviceManager dm=DeviceManagerFactory.CreateDeviceManager(fileService, deviceParser);
 
-PersonalComputer pc = new PersonalComputer("P-1", "PC", true, "Windows");
+app.MapGet("/api/devices", () => dm.GetAllDevices().Select((d) => new { Name = d.Name, Type = d.GetType().Name })
+);
+app.MapGet("/api/devices/{id}", (String id) => dm.GetDeviceById(id));
 
-app.MapGet("/api/animals", () => dm.GetAllDevices());
-//app.MapGet("/api/animals/{id}", (int id) => animals[id-1]);
-app.MapPost("/api/animals", (Smartwatch device) =>
-{
-    dm.AddDevice(device);
-    return Results.Created($"/api/animals/{device.Id}", device);
+app.MapPost("/api/devices/smartwatch", (Smartwatch device) => { dm.AddDevice(device); });
+app.MapPost("/api/devices/personalcomputer", (PersonalComputer device) => { dm.AddDevice(device); });
+app.MapPost("/api/devices/Embedded", (Embedded device) => { dm.AddDevice(device); });
+
+app.MapPut("/api/devices/smartwatch/{id}", (Smartwatch updatedDevice) =>
+{ ;
+    dm.EditDevice(updatedDevice);
 });
-/*app.MapPut("/api/animals/{id}", (int id,Animal animal) => animals[id-1]=animal);
-app.MapDelete("/api/animals/{id}", (int id) => animals.RemoveAt(id-1));*/
+
+app.MapPut("/api/devices/personalcomputer/{id}", (PersonalComputer updatedDevice) =>
+{ ;
+    dm.EditDevice(updatedDevice);
+});
+
+app.MapPut("/api/devices/embedded/{id}", (Embedded updatedDevice) =>
+{ ;
+    dm.EditDevice(updatedDevice);
+});
+
+app.MapDelete("/api/devices/{id}", (String id) =>
+{
+    dm.RemoveDeviceById(id);
+});
 
 app.Run();

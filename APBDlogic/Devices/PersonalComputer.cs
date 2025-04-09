@@ -3,7 +3,7 @@ namespace Tutorial3_Task;
 /// <summary>
 /// Now the PC class inherits from turnDevices instead of Device in order to differentiate that it can be turned on and off
 /// </summary>
-class PersonalComputer : TurnDevices
+public class PersonalComputer : TurnDevices
 {
     public string? OperatingSystem { get; set; }
 

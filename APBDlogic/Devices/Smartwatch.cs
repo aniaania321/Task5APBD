@@ -3,7 +3,7 @@ namespace Tutorial3_Task;
 /// <summary>
 /// Now the SW class inherits from turnDevices instead of Device in order to differentiate that it can be turned on and off
 /// </summary>
-class Smartwatch : TurnDevices, IPowerNotify
+public class Smartwatch : TurnDevices, IPowerNotify
 {
     private int _batteryLevel;
 
@@ -75,7 +75,6 @@ class Smartwatch : TurnDevices, IPowerNotify
     {
         return $"{Id},{Name},{IsEnabled},{BatteryLevel}%";
     }
-
     
     private bool CheckId(string id) => id.Contains("E-");
 }

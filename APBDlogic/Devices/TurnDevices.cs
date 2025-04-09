@@ -7,7 +7,7 @@ namespace Tutorial3_Task;
 /// </summary>
 public abstract class TurnDevices:Device
 {
-    public bool IsEnabled { get; private set; }
+    public bool IsEnabled { get; set; }
 
     protected TurnDevices(string id, string name, bool isEnabled) : base(id, name)
     {

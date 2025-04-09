@@ -5,7 +5,7 @@ namespace Tutorial3_Task;
 /// <summary>
 /// This class represents an embedded device and inherits from device
 /// </summary>
-class Embedded : Device
+public class Embedded : Device
 {
     public string NetworkName { get; set; }
     private string _ipAddress;

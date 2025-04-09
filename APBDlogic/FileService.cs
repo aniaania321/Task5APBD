@@ -44,7 +44,7 @@ public class FileService:DataInterface
             devicesSb.AppendLine(storedDevice.saveDevice());
         }
 
-        File.WriteAllText("/Users/aniasmuga/RiderProjects/Task5APBD/Task5APBD/input.txt", devicesSb.ToString());
+        File.WriteAllText("/Users/aniasmuga/RiderProjects/Task5APBD/APBDlogic/input.txt", devicesSb.ToString());
     }
 
 

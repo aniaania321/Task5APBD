@@ -18,7 +18,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-FileService fileService = new FileService("/Users/aniasmuga/RiderProjects/Task5APBD/APBDlogic/input.txt");
+FileService fileService = new FileService("/Users/aniasmuga/RiderProjects/API/APBDlogic/input.txt");
 DeviceParser deviceParser = new DeviceParser();
 DeviceManager dm=DeviceManagerFactory.CreateDeviceManager(fileService, deviceParser);
 
